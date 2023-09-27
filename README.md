@@ -1,2 +1,1 @@
-# responsive-grid-deliverable-main
-Deliverable 10
+# Responsive Grid
