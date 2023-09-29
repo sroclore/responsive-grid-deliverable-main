@@ -122,7 +122,6 @@ nav a:hover, nav a:focus {
 /* Step 2b: Write selector/rule property to position the skip class element when it is in focus*/
 
 .skip a:focus {
-  position: absolute;
   top: 20px;
 }
 
@@ -139,9 +138,6 @@ nav a:hover, nav a:focus {
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   gap: 15px;
-  padding: 20px;
-  background-color: #737373;
-  border: 1px solid #ddd
 }
 
 /* Step 5: Write selector/rule property to add the background image to the 
