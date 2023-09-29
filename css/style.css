@@ -130,14 +130,15 @@ nav a:hover, nav a:focus {
 
 *:focus {
   border: 1px;
-  outline: 2px black;
+  outline: 2px solid black;
 }
 
 /* Step 4: Write selector/rule property to style the container */
 
 .container {
-  width: 100px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  gap: 15px;
   padding: 20px;
   background-color: #737373;
   border: 1px solid #ddd
@@ -147,32 +148,120 @@ nav a:hover, nav a:focus {
 first div in the grid  and place it in the grid. */
 
 .container > div:first-child {
-  background-image: url('../images/header.jpg')
+  grid-column: 1 / -1;
+  min-height: 500px;
+  background-image: url('../images/header.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 /* Steps 6 and 7: Write the selector/rule properties to add place the next elements in the next
  four rows in the grid. */
 
       /*This will be a lot of rules.... but be strategic and combine seletors*/
-
     
-.container > div:nth-child(n+2):nth-child(-n+6) {
+  .about {
+    grid-column: 2 / 3; /* Begin in the 2nd column and span one column */
+    grid-row: 2 / 3; /* Begin on the 2nd row */
+    position: relative; /* Ensure relative positioning for content */
+    z-index: 2; /* Set a higher z-index to appear above the images */
+  }
+  .method {
+    grid-column: 2 / 3; /* Begin in the 2nd column and span one column */
+    grid-row: 3 / 4; /* Begin on the 3rd row */
+    position: relative; /* Ensure relative positioning for content */
+    z-index: 2; /* Set a higher z-index to appear above the images */
+  }
+  .clients {
+    grid-column: 2 / 3; /* Begin in the 2nd column and span one column */
+    grid-row: 4 / 5; /* Begin on the 4th row */
+    position: relative; /* Ensure relative positioning for content */
+    z-index: 2; /* Set a higher z-index to appear above the images */
+  }
+  .contact {
+    grid-column: 2 / 3; /* Begin in the 2nd column and span one column */
+    grid-row: 5 / 6; /* Begin on the 5th row */
+    position: relative; /* Ensure relative positioning for content */
+    z-index: 2; /* Set a higher z-index to appear above the images */
+  }
   
-}
-
+  .about-image {
+    grid-column: 1 / -1; /* Cover all columns */
+    grid-row: 2 / 3; /* Begin on the 2nd row */
+    max-height: 600px; /* Maximum height of 600px */
+    overflow: hidden; /* Hide content that goes outside the grid cell */
+    position: relative; /* Ensure relative positioning for images */
+    z-index: 1; /* Set a lower z-index to appear behind the text */
+  }
+  .method-image {
+    grid-column: 1 / -1; /* Cover all columns */
+    grid-row: 3 / 4; /* Begin on the 3rd row */
+    max-height: 600px; /* Maximum height of 600px */
+    overflow: hidden; /* Hide content that goes outside the grid cell */
+    position: relative; /* Ensure relative positioning for images */
+    z-index: 1; /* Set a lower z-index to appear behind the text */
+  }
+  
+  /* Style the .clients-image */
+  .clients-image {
+    grid-column: 1 / -1; /* Cover all columns */
+    grid-row: 4 / 5; /* Begin on the 4th row */
+    max-height: 600px; /* Maximum height of 600px */
+    overflow: hidden; /* Hide content that goes outside the grid cell */
+    position: relative; /* Ensure relative positioning for images */
+    z-index: 1; /* Set a lower z-index to appear behind the text */
+  }
+  
+  /* Style the .contact-image */
+  .contact-image {
+    grid-column: 1 / -1; /* Cover all columns */
+    grid-row: 5 / 6; /* Begin on the 5th row */
+    max-height: 600px; /* Maximum height of 600px */
+    overflow: hidden; /* Hide content that goes outside the grid cell */
+    position: relative; /* Ensure relative positioning for images */
+    z-index: 1; /* Set a lower z-index to appear behind the text */
+  }
+      
 
  /* Step 8: Write the selector/rule property to style the .text-block class. */
 
+ .text-block {
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  max-height: 250px; /* Maximum height of 250px */
+  overflow: auto; /* Allow scrolling for content that exceeds the grid cell */
+}
+.text-block h2 {
+  order: -1; /* Move the h2 element to the top of the column */
+}
 
 /* Add your media query here */
-
+@media screen and (min-width: 800px) {
 
   /* Step 9: Write the selector/rule property to style the nav element */
-
+  nav {
+    padding: 30px 0; /* 30px padding on top and bottom, 0 padding on left and right */
+    text-align: right; /* Align the navigation to the right side */
+  }
  
   /* Step 10: Write the selector/rule property to update the .container class */
-
+  .container {
+    display: grid;
+    grid-template-columns: 50px auto 500px auto 50px; /* Five columns with specified widths */
+    gap: 15px; /* Adjust gap as needed */
+  }
 
   /* Steps 11 and 12: Update the grid-column property of the grid's children (where-needed)*/
 
+  .about, .clients, .method-image, .contact-image {
+    grid-column: 3 / span 2; /* Begin in the third column and span two columns */
+  }
 
+
+ /* .method, .contact, .about-image, and .clients-image */
+  .method, .contact, .about-image, .clients-image {
+    grid-column: 2 / span 2; /* Begin in the second column and span two columns */
+  }
+}
